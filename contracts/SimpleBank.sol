@@ -49,6 +49,10 @@ contract SimpleBank {
     // Typically, called when invalid data is sent
     // Added so ether sent to this contract is reverted if the contract fails
     // otherwise, the sender's money is transferred to contract
+    receive() external payable {
+      
+    }
+
     fallback() external payable {
         revert();
     }
@@ -82,9 +86,9 @@ contract SimpleBank {
         /* Add the amount to the user's balance, call the event associated with a deposit,
           then return the balance of the user */
           require(enrolled[msg.sender] = true, "Address is not enrolled!");
-           uint(balances[msg.sender] += msg.value);
-           emit LogDepositMade(msg.sender, msg.value);
-           return uint(balances[msg.sender]);
+          uint(balances[msg.sender] += msg.value);
+          emit LogDepositMade(msg.sender, msg.value);
+          return uint(balances[msg.sender]);
     }
 
     /// @notice Withdraw ether from bank
